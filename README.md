@@ -1,11 +1,11 @@
-# 国际化切换下拉菜单组件
+# VUE Echarts 图片基础组件
 
 ## 支持多个图表共存
 
 ```
 //安装依赖
 npm i -S echarts
-
+npm i -S vue-echarts-sedu
 //运行项目
 npm run dev
 ```
