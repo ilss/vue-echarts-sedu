@@ -1,4 +1,4 @@
-# VUE Echarts 图片基础组件
+# VUE Echarts 基础组件
 
 ## 支持多个图表共存
 
