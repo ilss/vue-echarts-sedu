@@ -13,9 +13,7 @@
 </template>
    
 <script>
-import resize from './mixins/resize'
 export default {
-  mixins: [resize],
   data () {
     return {
       myEcharts:null
@@ -43,11 +41,15 @@ export default {
     const myEcharts = this.$echarts.init(document.querySelector('#' + this.domId))
     this.myEcharts = myEcharts
     this.checkAndSetOption()
+    let vue = this
+    window.addEventListener("resize", vue.change)
   },
   beforeDestroy() {
     if (!this.myEcharts) {
       return
     }
+    let vue = this
+    window.removeEventListener('resize', vue.change)
     this.myEcharts.dispose()
     this.myEcharts = null
   },
@@ -56,7 +58,10 @@ export default {
       this.checkAndSetOption()
     }
   },
-  methods: {
+  methods: {  
+    change() {
+        this.myEcharts.resize();//Echarts重绘方法
+    },
     checkAndSetOption () {
       let option = this.option //配置等于父组件传过来的数据
       if (Object.keys(option).length > 0) {
